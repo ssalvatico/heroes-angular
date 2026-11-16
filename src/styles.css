@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+/* Color classes de mat.system-classes() :
+Clase	                            Variable CSS
+mat-bg-primary                      --mat-sys-primary
+mat-bg-primary-container            --mat-sys-primary-container
+
+mat-bg-secondary                    --mat-sys-secondary
+mat-bg-secondary-container          --mat-sys-secondary-container
+
+mat-bg-tertiary                     --mat-sys-tertiary
+mat-bg-tertiary-container           --mat-sys-tertiary-container
+
+mat-bg-error                        --mat-sys-error
+mat-bg-error-container              --mat-sys-error-container
+
+mat-bg-surface                      --mat-sys-surface
+mat-bg-surface-dim                  --mat-sys-surface-dim
+mat-bg-surface-bright               --mat-sys-surface-bright
+
+mat-bg-surface-container            --mat-sys-surface-container
+mat-bg-surface-container-low        --mat-sys-surface-container-low
+mat-bg-surface-container-high       --mat-sys-surface-container-high
+mat-bg-surface-container-highest    --mat-sys-surface-container-highest
+mat-bg-surface-container-lowest     --mat-sys-surface-container-lowest
+mat-bg-inverse-surface	            --mat-sys-inverse-surface
+
+/* Color system tokens:
+Primary
+--mat-sys-primary
+--mat-sys-on-primary
+--mat-sys-primary-container
+--mat-sys-on-primary-container
+--mat-sys-primary-fixed
+--mat-sys-on-primary-fixed
+--mat-sys-on-primary-fixed-variant
+--mat-sys-primary-fixed-dim
+--mat-sys-inverse-primary
+
+Secondary
+--mat-sys-secondary
+--mat-sys-on-secondary
+--mat-sys-secondary-container
+--mat-sys-on-secondary-container
+--mat-sys-secondary-fixed
+--mat-sys-on-secondary-fixed
+--mat-sys-on-secondary-fixed-variant
+--mat-sys-secondary-fixed-dim
+
+Tertiary
+--mat-sys-tertiary
+--mat-sys-on-tertiary
+--mat-sys-tertiary-container
+--mat-sys-on-tertiary-container
+--mat-sys-tertiary-fixed
+--mat-sys-on-tertiary-fixed
+--mat-sys-on-tertiary-fixed-variant
+--mat-sys-tertiary-fixed-dim
+
+Error
+--mat-sys-error
+--mat-sys-on-error
+--mat-sys-error-container
+--mat-sys-on-error-container
+
+Surface
+--mat-sys-surface
+--mat-sys-on-surface
+--mat-sys-on-surface-variant
+--mat-sys-surface-bright
+--mat-sys-surface-container
+--mat-sys-surface-container-high
+--mat-sys-surface-container-highest
+--mat-sys-surface-container-low
+--mat-sys-surface-container-lowest
+--mat-sys-surface-dim
+--mat-sys-surface-tint
+--mat-sys-surface-variant
+--mat-sys-inverse-surface
+--mat-sys-inverse-on-surface
+
+Miscellaneous
+--mat-sys-background
+--mat-sys-on-background
+--mat-sys-neutral-variant20
+--mat-sys-neutral10
+--mat-sys-outline
+--mat-sys-outline-variant
+--mat-sys-scrim
+--mat-sys-shadow
+*/
