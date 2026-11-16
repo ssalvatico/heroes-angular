@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
       <input type="text" matInput placeholder="Contraseña">
     </mat-form-field>
 
-    <button mat-button mat-flat-button color="primary">
+    <button mat-button mat-flat-button class="mat-bg-primary mat-text-on-primary">
       <mat-icon>save</mat-icon>
       Ingresar
     </button>
