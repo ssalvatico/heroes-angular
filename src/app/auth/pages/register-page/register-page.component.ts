@@ -3,7 +3,35 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'auth-register',
   standalone: false,
-  template: `<p>registerPage works!</p>`,
+  template: `
+  <mat-card-content class="flex flex-column">
+    <span class="text-lg mb-4">Register</span>
+    
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input type="text" matInput placeholder="Nombre de usuario">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input type="text" matInput placeholder="Nombre de usuario">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input type="text" matInput placeholder="Contraseña">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary">
+      <mat-icon>save</mat-icon>
+      Registrarse
+    </button>
+    <div class="flex justify-content-end mt-5">
+      <a routerLink="/auth/login">¿Ya tenés cuenta?</a>
+    </div>
+  </mat-card-content>
+
+  `,
   styles: `
     :host {
       display: block;
