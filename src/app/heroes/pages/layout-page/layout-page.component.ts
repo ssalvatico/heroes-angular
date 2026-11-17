@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'heroes-layout',
   standalone: false,
   styles: `
-  .spacer{
-    flex: 1 1 auto;
-  }
+    :host {
+      display: block;
+    }
   `,
   template: `
 
@@ -28,10 +28,8 @@ import { Component } from '@angular/core';
           </mat-list-item>
         }
       </mat-nav-list>
-
     </mat-sidenav>
 
-    
     <mat-sidenav-content>
       <mat-toolbar class="mat-bg-error mat-text-on-error">
 
@@ -47,7 +45,7 @@ import { Component } from '@angular/core';
         </button>
       </mat-toolbar>
       
-      <div class="container">
+      <div class="container pl-3">
         <router-outlet></router-outlet>
       </div>
       

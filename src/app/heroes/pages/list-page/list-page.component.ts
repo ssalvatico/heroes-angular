@@ -6,11 +6,15 @@ import { Hero } from '../../interfaces/hero.interface';
   selector: 'heroes-list',
   standalone: false,
   template: `
-  <ul>
+  <h1>Listado de heroes</h1>
+  <mat-divider></mat-divider>
+  <div class="grid bm-8">
     @for (hero of heroes(); track $index) {
-      <li>{{ hero.superhero }}</li>
+      <div class="col-12 sm:col-4 md:col-3">
+        <heroes-hero-card [hero]="hero"></heroes-hero-card>
+      </div>
     }
-  </ul>
+  </div>
   `,
   styles: `
     :host {
