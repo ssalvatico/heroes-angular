@@ -13,6 +13,9 @@ html {
     )
   );
   @include mat.system-classes();
+  @include mat.sidenav-overrides((
+    container-shape: 0,
+  ));
 }
 
 body {
