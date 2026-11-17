@@ -12,7 +12,7 @@ import { Hero } from '../../interfaces/hero.interface';
       <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
     </mat-card-header>
 
-    <img mat-card-image [src]="'assets/heroes/' + hero.id + '.jpg'" [alt]="hero.superhero">
+    <img mat-card-image class="w-full h-auto" [src]="'assets/heroes/' + hero.id + '.jpg'" [alt]="hero.superhero" />
 
     <mat-card-content class="mt-2">
       <h4>{{ hero.publisher }}</h4>
