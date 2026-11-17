@@ -37,15 +37,15 @@ import { Component } from '@angular/core';
           <mat-icon>menu</mat-icon>
         </button>
 
-        <span class="spacer"></span>
-        <button mat-flat-button [ngStyle]="{
+        <!-- <span class="spacer"></span> -->
+        <button mat-flat-button class="ml-auto" [ngStyle]="{
           '--mat-button-filled-container-color': 'var(--mat-sys-error)',
           '--mat-button-filled-label-text-color': 'var(--mat-sys-on-error)'}"
         >Logout
         </button>
       </mat-toolbar>
       
-      <div class="container pl-3">
+      <div class="container px-3">
         <router-outlet></router-outlet>
       </div>
       
