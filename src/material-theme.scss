@@ -17,8 +17,8 @@ html {
     container-shape: 0,
   ));
   @include mat.card-overrides((
-    elevated-container-color: rgb(197, 197, 197),
-    elevated-container-elevation: red,
+    elevated-container-color: rgb(223, 223, 223),
+    elevated-container-elevation: var(--mat-sys-level3),
   ));
 }
 
@@ -31,4 +31,12 @@ body {
 
   margin: 0;
   height: 100%;
+}
+
+.btn-success{
+  background-color: rgb(2, 94, 2) !important;
+
+}
+.btn-danger{
+  background-color: #ba1a1a !important;
 }

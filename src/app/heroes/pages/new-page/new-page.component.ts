@@ -62,13 +62,23 @@ import { Publisher } from '../../interfaces/hero.interface';
           
           </div>
           <div class="flex justify-content-between">
-            <button mat-flat-button>Crear</button>
-            <button mat-flat-button>Eliminar</button>
+            <button mat-flat-button class="btn-success">
+              <mat-label>Guardar</mat-label>
+              <mat-icon>save</mat-icon>
+            </button>
+            <button mat-flat-button class="btn-danger">
+                <mat-label>Eliminar</mat-label>
+                <mat-icon>delete</mat-icon>
+            </button>
           </div>
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-12 sm:col-6"></div>
+    <div class="col-12 sm:col-6">
+      <mat-card>
+        <img matCardImage src="" alt="imagen del heroe" class="w-full h-auto" />
+      </mat-card>
+    </div>
   </div>
   `,
   styles: `
