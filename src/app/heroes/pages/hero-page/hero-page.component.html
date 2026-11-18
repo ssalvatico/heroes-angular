@@ -1,50 +1,63 @@
 <ng-template #divLoading>
-  <mat-grid-list cols="1">
-    <mat-grid-tile>
-      <mat-spinner></mat-spinner>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="flex justify-content-center align-items-center" style="min-height: 50vh;">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
 </ng-template>
 
-@if(hero()){
+@if (hero(); as h) {
   <div class="grid p-2">
 
-    <mat-card class="col-12 sm:col-6">
-      <mat-card-header>
-        <mat-card-title>{{ hero()!.alter_ego }}</mat-card-title>
-        <mat-card-subtitle>{{ hero()!.superhero }}</mat-card-subtitle>
+    <mat-card class="m-3 col-12 sm:col-6 md:col-4">
+      
+      <mat-card-header class="mb-2">
+        <mat-card-title class="text-3xl font-bold">{{ h.superhero }}</mat-card-title>
+        <mat-card-subtitle>{{ h.alter_ego }}</mat-card-subtitle>
       </mat-card-header>
       
-      <img [src]="hero()! | heroimage" [alt]="hero()!.superhero" mat-card-image />
-      
+      <img 
+        [src]="h | heroimage"
+        [alt]="h.superhero"
+        mat-card-image
+      />
     </mat-card>
-    
-    <mat-card class="col-12 sm:col-6">
 
+    <mat-card class="m-3 col-12 sm:col-6 md:col-4">
       <mat-card-header>
-        <mat-card-title>Información</mat-card-title>
-        <mat-card-subtitle>{{ hero()!.superhero }}</mat-card-subtitle>
+        <mat-card-title class="font-bold">Información</mat-card-title>
       </mat-card-header>
-      
-      <mat-card-content>
+
+      <mat-card-content class="pt-3">
         <mat-list>
-          <mat-list-item>{{ hero()!.first_appearance }}</mat-list-item>
-          <mat-list-item>{{ hero()!.characters }}</mat-list-item>
-          <mat-list-item>{{ hero()!.publisher }}</mat-list-item>
-          <mat-list-item>{{ hero()!.alter_ego }}</mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle class="text-sm font-bold">Editorial:</span>
+            <span matListItemLine>{{ h.publisher }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle class="text-sm font-bold">Primera aparición:</span>
+            <span matListItemLine>{{ h.first_appearance }}</span>
+          </mat-list-item>
+
+          <mat-list-item>
+            <span matListItemTitle class="text-sm font-bold pb-2">Personajes:</span>
+            <mat-chip-set matListItemLine>
+              @for (c of h.characters.split(','); track $index) {
+                <mat-chip>{{ c.trim() }}</mat-chip>
+              }
+            </mat-chip-set>
+          </mat-list-item>
         </mat-list>
-
-        <button
-          mat-button
-          (click)="goBack()"
-        >Volver</button>
       </mat-card-content>
-    </mat-card>
-    
-    
-  </div>
-}
 
-@else {
+      <mat-card-actions align="start">
+        <button mat-button (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Volver
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+} @else {
   <ng-container *ngTemplateOutlet="divLoading"></ng-container>
 }

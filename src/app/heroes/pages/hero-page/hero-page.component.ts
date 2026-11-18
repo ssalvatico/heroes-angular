@@ -9,9 +9,10 @@ import { Hero } from '../../interfaces/hero.interface';
   standalone: false,
   templateUrl: './hero-page.component.html',
   styles: `
-    :host {
-      display: block;
-    }
+    :host { display: block; }
+    mat-list-item {
+    height: auto !important;
+  }
   `,
 })
 export class HeroPageComponent implements OnInit{

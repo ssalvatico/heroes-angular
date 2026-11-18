@@ -22,4 +22,8 @@ export class HeroesService {
                 catchError(error => of(undefined))
             )
     }
+
+    getSuggestions(query:string):Observable<Hero[]>{
+        return this.httpClient.get<Hero[]>(`${this.baseUrl}/heroes?superhero:startsWith=${query}`);
+    }
 }

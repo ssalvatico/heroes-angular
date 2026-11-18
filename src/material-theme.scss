@@ -16,6 +16,10 @@ html {
   @include mat.sidenav-overrides((
     container-shape: 0,
   ));
+  @include mat.card-overrides((
+    elevated-container-color: rgb(197, 197, 197),
+    elevated-container-elevation: red,
+  ));
 }
 
 body {
