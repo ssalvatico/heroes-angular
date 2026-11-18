@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
   selector: 'heroes-page',
   standalone: false,
-  template: `<p>hero-page works!</p>`,
+  templateUrl: './hero-page.component.html',
   styles: `
     :host {
       display: block;
@@ -16,8 +16,9 @@ import { Hero } from '../../interfaces/hero.interface';
 })
 export class HeroPageComponent implements OnInit{
   
-  public hero?:Hero;
-  
+  private _hero:WritableSignal<Hero|undefined> = signal<Hero | undefined>(undefined);
+  public hero = this._hero.asReadonly();
+
   constructor(
     private heroService:HeroesService,
     private activatedRoute: ActivatedRoute,
@@ -31,8 +32,12 @@ export class HeroPageComponent implements OnInit{
       )
       .subscribe(hero => {
         if(!hero) return this.router.navigate(['/heroes/list']);
-        this.hero = hero;
+        this._hero.set(hero);
         return;
       });
+  }
+
+  goBack(){
+    this.router.navigateByUrl('/heroes/list');
   }
 }
