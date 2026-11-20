@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { booleanAttribute, Component, OnInit } from '@angular/core';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'heroes-new',
@@ -95,15 +98,25 @@ import { switchMap } from 'rxjs';
 
           
           <div class="flex justify-content-between">
-            <button mat-flat-button class="btn-success" (click)="onSubmit()">
+            <button
+              mat-flat-button
+              class="btn-success"
+              (click)="onSubmit()"
+            >
               <mat-label>Guardar</mat-label>
               <mat-icon>save</mat-icon>
             </button>
 
-            <button mat-flat-button class="btn-danger">
-                <mat-label>Eliminar</mat-label>
-                <mat-icon>delete</mat-icon>
+            @if(crudState === 'edit'){
+              <button
+                mat-flat-button
+                class="btn-danger"
+                (click)="onDeleteHero()"
+                >
+                  <mat-label>Eliminar</mat-label>
+                  <mat-icon>delete</mat-icon>
             </button>
+          }
           </div>
 
 
@@ -163,6 +176,8 @@ export class NewPageComponent implements OnInit{
     private heroesService:HeroesService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
+    private snackbar:MatSnackBar,
+    private dialog:MatDialog,
   ){}
   
   ngOnInit(): void {
@@ -185,7 +200,6 @@ export class NewPageComponent implements OnInit{
 
   get currentHero(): Hero{
     const hero = this.heroForm.value as Hero;
-    console.log(hero);
     return hero;
   }
 
@@ -194,14 +208,48 @@ export class NewPageComponent implements OnInit{
     if( this.currentHero.id ){
       this.heroesService.updateHero( this.currentHero )
         .subscribe(hero => {
-          //TODO mostrar snackbar
+          this.showSnackBar(`${hero.superhero} actualizado correctamente!`);
+          this.router.navigateByUrl('/');
         });
         return;
     }
     this.heroesService.addHero(this.currentHero)
       .subscribe(hero => {
-        //TODO mostrar snackbar
-        //TODO navegar a /heroes/edit/hero.id
+        this.showSnackBar(`${hero.superhero} creado correctamente!`);
+        this.router.navigateByUrl('/');
       })
+  }
+
+  onDeleteHero(animationDuration:string = '300ms'){
+    if(!this.currentHero.id) throw new Error("Hero id is required");
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: this.heroForm.value,
+      enterAnimationDuration: animationDuration,
+      exitAnimationDuration: animationDuration,
+    });
+
+    dialogRef.afterClosed()
+      .pipe(
+        filter( (result:boolean) => result),
+        switchMap( () => this.heroesService.deleteHeroById( this.currentHero.id ) ),
+        filter((wasDeleted:boolean) => wasDeleted)
+      )
+      .subscribe( () => {
+        this.router.navigateByUrl('/');
+      });
+
+    //! Evitar esto (subscribe dentro de otro)
+    // dialogRef.afterClosed().subscribe( result => {
+    //   if(!result) return;
+    //   this.heroesService.deleteHeroById(this.currentHero.id)
+    //     .subscribe(result => console.log(result));
+    //     this.router.navigateByUrl('/');
+    // });
+  }
+
+  showSnackBar(msg:string){
+    this.snackbar.open(msg, 'Ok', {
+      duration: 2500
+    })
   }
 }
