@@ -38,6 +38,10 @@ export class HeroPageComponent implements OnInit{
       });
   }
 
+  goEdit(){
+    this.router.navigateByUrl(`/heroes/edit/${this.hero()!.id}`);
+  }
+
   goBack(){
     this.router.navigateByUrl('/heroes/list');
   }

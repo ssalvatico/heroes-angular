@@ -15,7 +15,7 @@
       </mat-card-header>
       
       <img 
-        [src]="h | heroimage"
+        [src]="h | heroImage"
         [alt]="h.superhero"
         mat-card-image
       />
@@ -50,9 +50,14 @@
       </mat-card-content>
 
       <mat-card-actions align="start">
-        <button mat-button (click)="goBack()">
+        <button matButton class="btn-warn" (click)="goEdit()">
+          <mat-icon>edit</mat-icon>
+          <mat-label>Editar</mat-label>
+        </button>
+
+        <button matButton (click)="goBack()">
           <mat-icon>arrow_back</mat-icon>
-          Volver
+          <mat-label>Volver</mat-label>
         </button>
       </mat-card-actions>
     </mat-card>
