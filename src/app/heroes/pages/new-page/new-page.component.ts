@@ -6,7 +6,6 @@ import { Publisher } from '../../interfaces/hero.interface';
   standalone: false,
   template: `
   <h1>Editar / Agregar Héroe</h1>
-  <small>superman</small>
   <mat-divider class="mb-2" />
 
   <div class="grid">
